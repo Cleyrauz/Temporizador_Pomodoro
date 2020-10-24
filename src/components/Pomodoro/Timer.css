@@ -29,6 +29,10 @@
   background-color: #c60f13;
 }
 
+.Pomodoro .alert.longBreak {
+  background-color: #5da423;
+}
+
 .Pomodoro button {
   background: #2ba6cb;
   border: 1 px solid #1e728c;

@@ -21,12 +21,14 @@ class Timer extends Component {
       defaultTime: 1500, //25 min
       shortBreak: 300, //5 min
       longBreak: 900, //15 min
+      cero: 0, // 0 min
     };
   }
 
   coponentDidMound() {
     this.setDefaultTime();
   }
+
   setDefaultTime = () => {
     //tiempo por defecto 25 min
     this.setState({
@@ -41,6 +43,14 @@ class Timer extends Component {
       time: newTime,
     });
   };
+
+  setTimeToCero = () => {
+    //tiempo a cero
+    this.setState({
+      time: this.times.cero,
+    });
+  };
+
 
   restartInterval = () => {
     //Borre intervalo
@@ -106,6 +116,16 @@ class Timer extends Component {
     return `${m < 10 ? "0" : ""}${m}:${s < 10 ? "0" : ""}${s}`;
   }
 
+  resetTimer = () => {
+    this.setState({
+      alert: {
+        type: "cero",
+        message: "Reseting timer!"
+      },
+    });
+    return this.setTime(this.times.cero);
+  };
+
   render() {
     const {
       alert: { message, type },
@@ -126,6 +146,9 @@ class Timer extends Component {
           </button>
           <button className="long" onClick={this.setTimeForLongBreak}>
             Long Break
+          </button>
+          <button className="reset" onClick={this.resetTimer}>
+            Reset Timer
           </button>
         </div>
       </div>
